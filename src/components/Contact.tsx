@@ -2,13 +2,43 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { useToast } from "./ui/use-toast";
-import { useForm, ValidationError } from '@formspree/react';
+import { useRef, useState } from "react";
+import emailjs from '@emailjs/browser';
 
 export const Contact = () => {
   const { toast } = useToast();
-  const [state, handleSubmit] = useForm("xpzvwkrj"); // Replace with your Formspree form ID
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  if (state.succeeded) {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+
+    try {
+      setIsSubmitting(true);
+      await emailjs.sendForm(
+        'YOUR_SERVICE_ID', // You'll need to replace this
+        'YOUR_TEMPLATE_ID', // You'll need to replace this
+        formRef.current,
+        'YOUR_PUBLIC_KEY' // You'll need to replace this
+      );
+      setSubmitted(true);
+      if (formRef.current) {
+        formRef.current.reset();
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (submitted) {
     return (
       <section id="contact" className="py-20 bg-white">
         <div className="container mx-auto px-4">
@@ -31,18 +61,18 @@ export const Contact = () => {
           <p className="text-gray-600 mb-8">
             Get in touch with our team to discuss your IT needs
           </p>
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Input
-                id="name"
-                name="name"
+                id="user_name"
+                name="user_name"
                 placeholder="Name"
                 required
               />
               <Input
-                id="email"
+                id="user_email"
                 type="email"
-                name="email"
+                name="user_email"
                 placeholder="Email"
                 required
               />
@@ -60,18 +90,12 @@ export const Contact = () => {
               className="min-h-[150px]"
               required
             />
-            <ValidationError 
-              prefix="Message" 
-              field="message"
-              errors={state.errors}
-              className="text-red-500 text-sm text-left"
-            />
             <Button 
               type="submit" 
               className="w-full bg-primary hover:bg-primary/90"
-              disabled={state.submitting}
+              disabled={isSubmitting}
             >
-              {state.submitting ? 'Sending...' : 'Send Message'}
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </Button>
           </form>
         </div>
