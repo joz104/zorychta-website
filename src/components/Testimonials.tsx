@@ -3,6 +3,18 @@ import { Star } from "lucide-react";
 
 const testimonials = [
   {
+    text: "John has been amazing to work with at Mitch's Soccer! He built our website and online store from the ground up. He also took care of all the tech at our facility, so things run smoothly day-to-day. He's been super reliable, always there when we need him, and has made our tech setup so much better. We couldn't have done it without him!",
+    author: "Mitch Doell",
+    role: "Owner, Mitch's Soccer",
+    rating: 5
+  },
+  {
+    text: "ZTC was instrumental in elevating the IT infrastructure at All Things Green. His expertise in networking, access control, and security solutions has greatly enhanced our operations. From the moment he started, John demonstrated a deep understanding of our business needs and tailored his services to ensure everything ran smoothly and securely.",
+    author: "Jeff MacDonald",
+    role: "Director of Operations, All Things Green",
+    rating: 5
+  },
+  {
     text: "Excellent IT support services. Very responsive and professional.",
     author: "Business Owner",
     rating: 5
@@ -40,6 +52,9 @@ export const Testimonials = () => {
                 </div>
                 <p className="text-gray-700 mb-4">{testimonial.text}</p>
                 <p className="text-primary font-semibold">{testimonial.author}</p>
+                {testimonial.role && (
+                  <p className="text-gray-600 text-sm">{testimonial.role}</p>
+                )}
               </CardContent>
             </Card>
           ))}
