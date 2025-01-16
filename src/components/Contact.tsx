@@ -2,17 +2,26 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { useToast } from "./ui/use-toast";
+import { useForm, ValidationError } from '@formspree/react';
 
 export const Contact = () => {
   const { toast } = useToast();
+  const [state, handleSubmit] = useForm("xpzvwkrj"); // Replace with your Formspree form ID
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you as soon as possible.",
-    });
-  };
+  if (state.succeeded) {
+    return (
+      <section id="contact" className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-4xl font-bold text-secondary mb-4">Thank You!</h2>
+            <p className="text-gray-600">
+              Your message has been sent successfully. We'll get back to you soon.
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="contact" className="py-20 bg-white">
@@ -24,17 +33,45 @@ export const Contact = () => {
           </p>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Input placeholder="Name" required />
-              <Input type="email" placeholder="Email" required />
+              <Input
+                id="name"
+                name="name"
+                placeholder="Name"
+                required
+              />
+              <Input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+              />
             </div>
-            <Input placeholder="Subject" required />
+            <Input
+              id="subject"
+              name="subject"
+              placeholder="Subject"
+              required
+            />
             <Textarea
+              id="message"
+              name="message"
               placeholder="Your message"
               className="min-h-[150px]"
               required
             />
-            <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
-              Send Message
+            <ValidationError 
+              prefix="Message" 
+              field="message"
+              errors={state.errors}
+              className="text-red-500 text-sm text-left"
+            />
+            <Button 
+              type="submit" 
+              className="w-full bg-primary hover:bg-primary/90"
+              disabled={state.submitting}
+            >
+              {state.submitting ? 'Sending...' : 'Send Message'}
             </Button>
           </form>
         </div>

@@ -13,21 +13,6 @@ const testimonials = [
     author: "Jeff MacDonald",
     role: "Director of Operations, All Things Green",
     rating: 5
-  },
-  {
-    text: "Excellent IT support services. Very responsive and professional.",
-    author: "Business Owner",
-    rating: 5
-  },
-  {
-    text: "Great experience with their network consulting services. Highly recommended!",
-    author: "IT Manager",
-    rating: 5
-  },
-  {
-    text: "Reliable and knowledgeable team for all our tech needs.",
-    author: "Office Administrator",
-    rating: 5
   }
 ];
 
@@ -38,7 +23,7 @@ export const Testimonials = () => {
         <h2 className="text-4xl font-bold text-center text-secondary mb-12">
           What Our Clients Say
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {testimonials.map((testimonial, index) => (
             <Card key={index} className="animate-fadeIn" style={{ animationDelay: `${index * 0.2}s` }}>
               <CardContent className="p-6">
