@@ -29,7 +29,7 @@ export const Hero = () => {
           <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
             <div className="animate-fadeIn">
               <h1 className="text-white font-semibold text-5xl mb-8">
-                IT SOLUTIONS YOU CAN TRUST
+                IT Solutions You Can Trust
               </h1>
               <p className="mt-4 text-lg text-gray-300 mb-8">
                 Expert IT Consulting to help your business stay productive and secure
