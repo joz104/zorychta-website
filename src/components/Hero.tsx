@@ -10,8 +10,21 @@ export const Hero = () => {
   };
 
   return (
-    <div className="relative bg-secondary pt-24 pb-32 flex content-center items-center justify-center min-h-screen">
-      <div className="container mx-auto px-4">
+    <div className="relative min-h-screen flex items-center justify-center">
+      {/* Background image with overlay */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+        <div className="absolute inset-0 bg-black/60" /> {/* Dark overlay */}
+      </div>
+
+      {/* Content */}
+      <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-wrap items-center">
           <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
             <div className="animate-fadeIn">
