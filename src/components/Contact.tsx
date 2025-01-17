@@ -18,15 +18,19 @@ export const Contact = () => {
     try {
       setIsSubmitting(true);
       await emailjs.sendForm(
-        'YOUR_SERVICE_ID', // You'll need to replace this
-        'YOUR_TEMPLATE_ID', // You'll need to replace this
+        'service_p72035i',
+        'template_8srf7l7',
         formRef.current,
-        'YOUR_PUBLIC_KEY' // You'll need to replace this
+        'F0d9YH1RHzGmAVTDO'
       );
       setSubmitted(true);
       if (formRef.current) {
         formRef.current.reset();
       }
+      toast({
+        title: "Success",
+        description: "Your message has been sent successfully.",
+      });
     } catch (error) {
       toast({
         title: "Error",
