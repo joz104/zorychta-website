@@ -2,6 +2,13 @@ import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
 
 export const Hero = () => {
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="relative bg-secondary pt-24 pb-32 flex content-center items-center justify-center min-h-screen">
       <div className="container mx-auto px-4">
@@ -15,7 +22,10 @@ export const Hero = () => {
                 Expert IT consulting and support services for Windows, Mac, servers,
                 and networks. We help businesses stay productive and secure.
               </p>
-              <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg">
+              <Button 
+                onClick={scrollToContact}
+                className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg"
+              >
                 Get Started
                 <ArrowRight className="ml-2" size={20} />
               </Button>
