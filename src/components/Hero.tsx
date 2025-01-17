@@ -29,11 +29,10 @@ export const Hero = () => {
           <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
             <div className="animate-fadeIn">
               <h1 className="text-white font-semibold text-5xl mb-8">
-                IT Solutions you can trust
+                IT SOLUTIONS YOU CAN TRUST
               </h1>
               <p className="mt-4 text-lg text-gray-300 mb-8">
-                Expert IT consulting and support services for Windows, Mac, servers,
-                and networks. We help businesses stay productive and secure.
+                Expert IT Consulting to help your business stay productive and secure
               </p>
               <Button 
                 onClick={scrollToContact}
