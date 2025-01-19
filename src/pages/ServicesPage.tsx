@@ -98,27 +98,32 @@ const ServicesPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       <Navbar />
-      <section className="py-20 bg-white pt-24">
+      <section className="py-20 pt-24">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl font-bold text-secondary mb-4">Our Services</h1>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Comprehensive IT solutions tailored to your business needs, with special expertise in Google Workspace, Office 365, and non-profit organizations
+          <div className="text-center mb-16 animate-fadeIn">
+            <h1 className="text-5xl font-bold text-secondary mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+              Our Services
+            </h1>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+              Comprehensive IT solutions tailored to your business needs
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <Card 
                 key={index} 
-                className="tilt-card border-2 border-gray-100 hover:border-primary/20 transition-all duration-300"
+                className="tilt-card border-2 border-gray-100 hover:border-primary/20 transition-all duration-300 hover:shadow-xl bg-white/50 backdrop-blur-sm"
                 style={{ transformStyle: 'preserve-3d', transition: 'transform 0.1s ease' }}
               >
                 <CardHeader className="flex flex-col items-center text-center">
-                  <service.icon className="h-12 w-12 text-primary mb-4" />
-                  <CardTitle className="text-xl font-bold">{service.title}</CardTitle>
+                  <div className="p-3 rounded-full bg-gradient-to-br from-primary/10 to-secondary/10 mb-4">
+                    <service.icon className="h-8 w-8 text-primary" />
+                  </div>
+                  <CardTitle className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                    {service.title}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-gray-600">{service.description}</p>
@@ -127,11 +132,31 @@ const ServicesPage = () => {
             ))}
           </div>
 
-          <div className="mt-16 bg-gray-50 p-8 rounded-lg">
-            <h2 className="text-3xl font-bold text-secondary mb-4 text-center">Non-Profit Focus</h2>
-            <p className="text-gray-600 text-center max-w-3xl mx-auto">
-              We specialize in serving non-profit organizations with tailored IT solutions. Our team understands the unique challenges and budget constraints faced by non-profits. We help organizations access technology grants, discounted software licensing, and implement cost-effective solutions that maximize your impact.
-            </p>
+          <div className="mt-20 rounded-2xl bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/5 p-8 backdrop-blur-sm animate-fadeIn">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-secondary mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                Non-Profit Focus
+              </h2>
+              <div className="bg-white/50 rounded-xl p-6 shadow-lg border border-gray-100">
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  We specialize in serving non-profit organizations with tailored IT solutions. Our team understands the unique challenges and budget constraints faced by non-profits. We help organizations access technology grants, discounted software licensing, and implement cost-effective solutions that maximize your impact.
+                </p>
+                <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-4 rounded-lg bg-white/80 text-center">
+                    <Heart className="h-6 w-6 text-primary mx-auto mb-2" />
+                    <p className="text-sm font-medium text-gray-700">Technology Grants</p>
+                  </div>
+                  <div className="p-4 rounded-lg bg-white/80 text-center">
+                    <Shield className="h-6 w-6 text-primary mx-auto mb-2" />
+                    <p className="text-sm font-medium text-gray-700">Discounted Licensing</p>
+                  </div>
+                  <div className="p-4 rounded-lg bg-white/80 text-center">
+                    <Users className="h-6 w-6 text-primary mx-auto mb-2" />
+                    <p className="text-sm font-medium text-gray-700">Dedicated Support</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

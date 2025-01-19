@@ -20,9 +20,6 @@ export const Navbar = () => {
               <Link to="/services" className="text-gray-300 hover:text-white px-3 py-2">
                 Services
               </Link>
-              <a href="#about" className="text-gray-300 hover:text-white px-3 py-2">
-                About
-              </a>
               <Button variant="default" className="bg-primary hover:bg-primary/90">
                 Contact Us
               </Button>
@@ -48,13 +45,6 @@ export const Navbar = () => {
             >
               Services
             </Link>
-            <a
-              href="#about"
-              className="text-gray-300 hover:text-white block px-3 py-2"
-              onClick={() => setIsOpen(false)}
-            >
-              About
-            </a>
             <Button
               variant="default"
               className="w-full bg-primary hover:bg-primary/90 mt-2"
