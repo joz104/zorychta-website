@@ -100,7 +100,7 @@ const ServicesPage = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <section className="py-20 bg-white mt-16">
+      <section className="py-20 bg-white pt-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h1 className="text-4xl font-bold text-secondary mb-4">Our Services</h1>
