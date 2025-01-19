@@ -1,4 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import {
   Monitor,
   Server,
@@ -10,6 +12,7 @@ import {
   Users,
   Heart,
 } from "lucide-react";
+import { useEffect } from "react";
 
 const services = [
   {
@@ -60,9 +63,44 @@ const services = [
 ];
 
 const ServicesPage = () => {
+  useEffect(() => {
+    const cards = document.querySelectorAll('.tilt-card');
+    
+    const handleMouseMove = (e: MouseEvent, card: HTMLElement) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = (y - centerY) / 20;
+      const rotateY = (centerX - x) / 20;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    };
+
+    const handleMouseLeave = (card: HTMLElement) => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+    };
+
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => handleMouseMove(e as MouseEvent, card as HTMLElement));
+      card.addEventListener('mouseleave', () => handleMouseLeave(card as HTMLElement));
+    });
+
+    return () => {
+      cards.forEach(card => {
+        card.removeEventListener('mousemove', (e) => handleMouseMove(e as MouseEvent, card as HTMLElement));
+        card.removeEventListener('mouseleave', () => handleMouseLeave(card as HTMLElement));
+      });
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen pt-20">
-      <section className="py-20 bg-white">
+    <div className="min-h-screen">
+      <Navbar />
+      <section className="py-20 bg-white mt-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h1 className="text-4xl font-bold text-secondary mb-4">Our Services</h1>
@@ -97,6 +135,7 @@ const ServicesPage = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };
