@@ -23,9 +23,11 @@ export const Navbar = () => {
               <a href="#about" className="text-gray-300 hover:text-white px-3 py-2">
                 About
               </a>
-              <Button variant="default" className="bg-primary hover:bg-primary/90">
-                Contact Us
-              </Button>
+              <Link to="/contact">
+                <Button variant="default" className="bg-primary hover:bg-primary/90">
+                  Contact Us
+                </Button>
+              </Link>
             </div>
           </div>
           <div className="md:hidden">
@@ -55,13 +57,14 @@ export const Navbar = () => {
             >
               About
             </a>
-            <Button
-              variant="default"
-              className="w-full bg-primary hover:bg-primary/90 mt-2"
-              onClick={() => setIsOpen(false)}
-            >
-              Contact Us
-            </Button>
+            <Link to="/contact" onClick={() => setIsOpen(false)}>
+              <Button
+                variant="default"
+                className="w-full bg-primary hover:bg-primary/90 mt-2"
+              >
+                Contact Us
+              </Button>
+            </Link>
           </div>
         </div>
       )}
