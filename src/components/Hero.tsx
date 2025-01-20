@@ -29,11 +29,18 @@ export const Hero = () => {
           <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
             <div className="animate-fadeIn">
               <h1 className="text-white font-semibold text-5xl mb-8">
+<<<<<<< HEAD
                 IT Solutions for Your Growing Business
               </h1>
               <p className="mt-4 text-lg text-gray-300 mb-8">
                 Expert IT consulting and support services for Windows, Mac, servers,
                 and networks. We help businesses stay productive and secure.
+=======
+                IT Solutions You Can Trust
+              </h1>
+              <p className="mt-4 text-lg text-gray-300 mb-8">
+                Expert IT Consulting to help your business stay productive and secure
+>>>>>>> eb3d1c3e61654f8c79da889f6b667ff4c9f85fa0
               </p>
               <Button 
                 onClick={scrollToContact}
@@ -48,4 +55,8 @@ export const Hero = () => {
       </div>
     </div>
   );
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> eb3d1c3e61654f8c79da889f6b667ff4c9f85fa0
