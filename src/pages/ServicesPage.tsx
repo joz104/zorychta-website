@@ -127,9 +127,9 @@ const ServicesPage = () => {
             ))}
           </div>
 
-          <div className="mt-16 relative overflow-hidden rounded-xl bg-gradient-to-r from-primary/10 to-primary/5 p-8 border border-primary/20 shadow-lg">
+          <div className="mt-16 relative overflow-hidden rounded-xl bg-white p-8 border border-gray-200 shadow-lg">
             <div className="absolute inset-0 bg-grid-white/10 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
-            <h2 className="text-3xl font-bold text-secondary mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+            <h2 className="text-3xl font-bold text-secondary mb-6 text-center">
               Non-Profit Focus
             </h2>
             <div className="space-y-4">
@@ -137,17 +137,17 @@ const ServicesPage = () => {
                 We specialize in serving non-profit organizations with tailored IT solutions. Our team understands the unique challenges and budget constraints faced by non-profits. We help organizations access technology grants, discounted software licensing, and implement cost-effective solutions that maximize your impact.
               </p>
               <div className="flex justify-center mt-6 space-x-4">
-                <div className="flex items-center space-x-2 text-primary">
-                  <Heart className="h-5 w-5" />
-                  <span>Technology Grants</span>
+                <div className="flex items-center space-x-2">
+                  <Heart className="h-5 w-5 text-primary" />
+                  <span className="text-secondary">Technology Grants</span>
                 </div>
-                <div className="flex items-center space-x-2 text-primary">
-                  <Shield className="h-5 w-5" />
-                  <span>Discounted Licensing</span>
+                <div className="flex items-center space-x-2">
+                  <Shield className="h-5 w-5 text-primary" />
+                  <span className="text-secondary">Discounted Licensing</span>
                 </div>
-                <div className="flex items-center space-x-2 text-primary">
-                  <Users className="h-5 w-5" />
-                  <span>Cost-Effective Solutions</span>
+                <div className="flex items-center space-x-2">
+                  <Users className="h-5 w-5 text-primary" />
+                  <span className="text-secondary">Cost-Effective Solutions</span>
                 </div>
               </div>
             </div>
