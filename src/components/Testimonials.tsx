@@ -20,25 +20,18 @@ export const Testimonials = () => {
   return (
     <section id="testimonials" className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-secondary mb-12 animate-fade-in">
+        <h2 className="text-4xl font-bold text-center text-secondary mb-12">
           What Our Clients Say
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {testimonials.map((testimonial, index) => (
-            <Card 
-              key={index} 
-              className="transform transition-all duration-500 hover:scale-105 animate-fade-in opacity-0" 
-              style={{ 
-                animationDelay: `${index * 200}ms`,
-                animationFillMode: 'forwards'
-              }}
-            >
+            <Card key={index} className="animate-fadeIn" style={{ animationDelay: `${index * 0.2}s` }}>
               <CardContent className="p-6">
                 <div className="flex mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star
                       key={i}
-                      className="w-5 h-5 fill-primary text-primary transform transition-all duration-300 hover:scale-110"
+                      className="w-5 h-5 fill-primary text-primary"
                     />
                   ))}
                 </div>
