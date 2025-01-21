@@ -15,7 +15,7 @@ export const About = () => {
             </p>
             <div className="space-y-4">
               {[
-                "24/7 Technical Support",
+                "Over Two Decades of Industry Excellence",
                 "Certified IT Professionals",
                 "Custom Solutions",
                 "Proven Track Record",
