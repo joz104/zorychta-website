@@ -5,9 +5,22 @@ import {
   Globe,
   Shield,
   HeadphonesIcon,
+  Mail,
+  Users,
+  Heart,
+  Database,
+  Cloud,
+  Lock,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const services = [
   {
@@ -39,6 +52,39 @@ const services = [
     title: "Remote Support",
     description: "Instant technical assistance from anywhere",
     icon: HeadphonesIcon,
+  },
+];
+
+const additionalServices = [
+  {
+    title: "Google Workspace Administration",
+    description: "Expert management of Google Workspace including email and collaboration tools",
+    icon: Mail,
+  },
+  {
+    title: "Office 365 Management",
+    description: "Comprehensive Office 365 setup, migration, and administration",
+    icon: Users,
+  },
+  {
+    title: "Non-Profit IT Solutions",
+    description: "Specialized IT services for non-profit organizations",
+    icon: Heart,
+  },
+  {
+    title: "Database Management",
+    description: "Professional database design, optimization, and maintenance",
+    icon: Database,
+  },
+  {
+    title: "Cloud Solutions",
+    description: "Secure and scalable cloud infrastructure services",
+    icon: Cloud,
+  },
+  {
+    title: "Cybersecurity Services",
+    description: "Advanced security measures to protect your business",
+    icon: Lock,
   },
 ];
 
@@ -77,6 +123,21 @@ export const Services = () => {
     };
   }, []);
 
+  const ServiceCard = ({ service }: { service: typeof services[0] }) => (
+    <Card 
+      className="tilt-card border-2 border-gray-100 hover:border-primary/20 transition-all duration-300"
+      style={{ transformStyle: 'preserve-3d', transition: 'transform 0.1s ease' }}
+    >
+      <CardHeader className="flex flex-col items-center text-center">
+        <service.icon className="h-12 w-12 text-primary mb-4" />
+        <CardTitle className="text-xl font-bold">{service.title}</CardTitle>
+      </CardHeader>
+      <CardContent className="text-center">
+        <p className="text-gray-600">{service.description}</p>
+      </CardContent>
+    </Card>
+  );
+
   return (
     <section id="services" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -86,22 +147,27 @@ export const Services = () => {
             Comprehensive IT solutions tailored to your business needs
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {services.map((service, index) => (
-            <Card 
-              key={index} 
-              className="tilt-card border-2 border-gray-100 hover:border-primary/20 transition-all duration-300"
-              style={{ transformStyle: 'preserve-3d', transition: 'transform 0.1s ease' }}
-            >
-              <CardHeader className="flex flex-col items-center text-center">
-                <service.icon className="h-12 w-12 text-primary mb-4" />
-                <CardTitle className="text-xl font-bold">{service.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center">
-                <p className="text-gray-600">{service.description}</p>
-              </CardContent>
-            </Card>
+            <ServiceCard key={index} service={service} />
           ))}
+        </div>
+        
+        <div className="mt-12">
+          <h3 className="text-3xl font-bold text-secondary text-center mb-8">Additional Services</h3>
+          <Carousel className="w-full max-w-5xl mx-auto">
+            <CarouselContent>
+              {additionalServices.map((service, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <ServiceCard service={service} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="flex justify-center gap-4 mt-8">
+              <CarouselPrevious />
+              <CarouselNext />
+            </div>
+          </Carousel>
         </div>
       </div>
     </section>
