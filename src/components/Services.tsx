@@ -22,7 +22,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-const services = [
+const allServices = [
   {
     title: "Windows & Mac Support",
     description: "Expert troubleshooting and support for all desktop platforms",
@@ -53,9 +53,6 @@ const services = [
     description: "Instant technical assistance from anywhere",
     icon: HeadphonesIcon,
   },
-];
-
-const additionalServices = [
   {
     title: "Google Workspace Administration",
     description: "Expert management of Google Workspace including email and collaboration tools",
@@ -123,7 +120,7 @@ export const Services = () => {
     };
   }, []);
 
-  const ServiceCard = ({ service }: { service: typeof services[0] }) => (
+  const ServiceCard = ({ service }: { service: typeof allServices[0] }) => (
     <Card 
       className="tilt-card border-2 border-gray-100 hover:border-primary/20 transition-all duration-300"
       style={{ transformStyle: 'preserve-3d', transition: 'transform 0.1s ease' }}
@@ -147,28 +144,20 @@ export const Services = () => {
             Comprehensive IT solutions tailored to your business needs
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {services.map((service, index) => (
-            <ServiceCard key={index} service={service} />
-          ))}
-        </div>
         
-        <div className="mt-12">
-          <h3 className="text-3xl font-bold text-secondary text-center mb-8">Additional Services</h3>
-          <Carousel className="w-full max-w-5xl mx-auto">
-            <CarouselContent>
-              {additionalServices.map((service, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <ServiceCard service={service} />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="flex justify-center gap-4 mt-8">
-              <CarouselPrevious />
-              <CarouselNext />
-            </div>
-          </Carousel>
-        </div>
+        <Carousel className="w-full max-w-7xl mx-auto">
+          <CarouselContent>
+            {allServices.map((service, index) => (
+              <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/3 xl:basis-1/3">
+                <ServiceCard service={service} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="flex justify-center gap-4 mt-8">
+            <CarouselPrevious />
+            <CarouselNext />
+          </div>
+        </Carousel>
       </div>
     </section>
   );
